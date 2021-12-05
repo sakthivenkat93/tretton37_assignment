@@ -25,7 +25,8 @@ const App = () => {
         console.log('Success');
         dispatch(setEmployees(data));
       })
-  }, []);
+  }, [dispatch]);
+  
 
   return (
     <div className="App">
