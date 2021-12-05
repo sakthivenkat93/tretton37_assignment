@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import EmployeeCard from './EmployeeCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { setEmployees, setFilterName, setFilterOffice } from './EmployeeSlice';
+import { setEmployees} from './EmployeeSlice';
 
 require('dotenv').config()
 
