@@ -1,26 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import EmployeeCard from './EmployeeCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { setEmployees, setFilterName, setFilterOffice } from './EmployeeSlice';
 
 require('dotenv').config()
 
 const App = () => {
-  let [Employees, setEmployees] = useState([]);
+  let [filterName, setFilterName] = useState();
+  let [filterOffice, setFilterOffice] = useState();
+  const employees = useSelector((state) => state.employees.value);
 
-  fetch('https://api.1337co.de/v3/employees', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': process.env.REACT_APP_SERVER_API_KEY
-    },
-  }).then(response => response.json())
-    .then(data => {
-      console.log('Success:', setEmployees(data));
-    })
+  const dispatch = useDispatch();
 
-  const listItems = Employees.map((Employee, index) =>
-    <EmployeeCard key={index} Employee={Employee}></EmployeeCard>
-  );
+  useEffect(() => {
+    fetch('https://api.1337co.de/v3/employees', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.REACT_APP_SERVER_API_KEY
+      },
+    }).then(response => response.json())
+      .then(data => {
+        console.log('Success');
+        dispatch(setEmployees(data));
+      })
+  }, []);
+
+  // const handleFilter = () => {
+    // let filteredemployeeList = employees.filter(employee => filterName ? employee.name.includes(filterName) : true).filter(employee => filterOffice ? employee.office.includes(filterOffice) : true);
+    // setFilteredEmployees(filteredemployeeList);
+    //employees.filter(employee => filterName ? employee.name.includes(filterName) : true).filter(employee => filterOffice ? employee.office.includes(filterOffice) : true)
+  // }
+
+  // function updateFilterName(event){
+    // dispatch(setFilterOffice(event.target.value))
+  // }
 
   return (
     <div className="App">
@@ -30,11 +47,13 @@ const App = () => {
       <div className="AppBody">
         <div className="FilterArea">
           <span>
-            Potential Filter and Tools Area
+            <input id="FilterByName" className="TextBox" type="text" placeholder="Filter By Name" onChange={e => setFilterName(e.target.value)}></input>
+            <input id="FilterByOffice" className="TextBox" type="text" placeholder="Filter By Office" onChange={e => setFilterOffice(e.target.value)}></input>
+            {/* <button id="FilterButton" className="Button">Filter <FontAwesomeIcon icon={faFilter} color="#000000" onClick={() => handleFilter()} /></button> */}
           </span>
         </div>
         <div className="EmployeeCardCollection">
-          {listItems.length > 0 ? listItems : <div className="LoadingPlaceHolder">Loading</div>}
+          {employees ? employees.filter(employee => filterName ? employee.name.toLowerCase().includes(filterName.toLowerCase()) : true).filter(employee => filterOffice ? employee.office.toLowerCase().includes(filterOffice.toLowerCase()) : true).map((Employee, index) => <EmployeeCard key={index} Employee={Employee}></EmployeeCard>):'Loading'}
         </div>
       </div>
     </div>

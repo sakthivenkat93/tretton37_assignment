@@ -6,7 +6,7 @@ const EmployeeCard = (props) => {
     return(
         <div className="EmployeeCard">
             <div className="ImageContainer">
-                <div className="Image" style={{background:`url(${props.Employee.imagePortraitUrl}) no-repeat center`, backgroundSize: 'contain'}}>
+                <div className="Image" style={{background:`url(${props.Employee.imagePortraitUrl}) no-repeat center`}}>
                 </div>
             </div>
             <div className="EmployeeContact">
