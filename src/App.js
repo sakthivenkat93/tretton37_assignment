@@ -29,16 +29,6 @@ const App = () => {
       })
   }, []);
 
-  // const handleFilter = () => {
-    // let filteredemployeeList = employees.filter(employee => filterName ? employee.name.includes(filterName) : true).filter(employee => filterOffice ? employee.office.includes(filterOffice) : true);
-    // setFilteredEmployees(filteredemployeeList);
-    //employees.filter(employee => filterName ? employee.name.includes(filterName) : true).filter(employee => filterOffice ? employee.office.includes(filterOffice) : true)
-  // }
-
-  // function updateFilterName(event){
-    // dispatch(setFilterOffice(event.target.value))
-  // }
-
   return (
     <div className="App">
       <div className="AppHeader">
@@ -49,7 +39,6 @@ const App = () => {
           <span>
             <input id="FilterByName" className="TextBox" type="text" placeholder="Filter By Name" onChange={e => setFilterName(e.target.value)}></input>
             <input id="FilterByOffice" className="TextBox" type="text" placeholder="Filter By Office" onChange={e => setFilterOffice(e.target.value)}></input>
-            {/* <button id="FilterButton" className="Button">Filter <FontAwesomeIcon icon={faFilter} color="#000000" onClick={() => handleFilter()} /></button> */}
           </span>
         </div>
         <div className="EmployeeCardCollection">

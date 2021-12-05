@@ -2,9 +2,11 @@
 
 This project includes the following functionalities.
 
-### The base app layout with employee contact information rendered with data from the API
+The base app layout with employee contact information rendered with data from the API
 
-### Responsive design to limited sizes(4-column, 3-column and a single column grid)
+Responsive design to limited sizes(4-column, 3-column and a single column grid)
+
+Filter by Office Location and Employee Name
 
 
 # Getting Started with the Application
