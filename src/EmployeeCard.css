@@ -1,0 +1,50 @@
+.EmployeeCard {
+    margin: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px lightgrey;
+    min-width: 200px;
+}
+
+.ImageContainer{
+    display: flex;
+}
+
+.Image{
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    padding: 15px;
+    background: url('./images/placeholder.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+    margin: auto;
+}
+
+.EmployeeName {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.EmployeeLinks {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    float: right;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.EmployeeLinks > a {
+    margin: 0px 5px;
+}
+
+.EmployeeLocation {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+}
